@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="freelancerDb@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.7">
+    <root id="1"/>
+    <database id="2" parent="1" name="freelancerDb">
+      <ObjectId>149819</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="3" parent="1" name="postgres">
+      <ObjectId>12413</ObjectId>
+    </database>
+    <database id="4" parent="1" name="multischemafree">
+      <ObjectId>83009</ObjectId>
+    </database>
+    <database id="5" parent="1" name="globalauth">
+      <ObjectId>133615</ObjectId>
+    </database>
+    <database id="6" parent="1" name="qrtzdb">
+      <ObjectId>134100</ObjectId>
+    </database>
+    <database id="7" parent="1" name="logaudit">
+      <ObjectId>134241</ObjectId>
+    </database>
+    <database id="8" parent="1" name="multischemapaid">
+      <ObjectId>134265</ObjectId>
+    </database>
+    <database id="9" parent="1" name="six">
+      <ObjectId>149729</ObjectId>
+    </database>
+    <database id="10" parent="1" name="kpidatabase">
+      <ObjectId>149798</ObjectId>
+    </database>
+    <role id="11" parent="1" name="postgres">
+      <ObjectId>10</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CreateRole>1</CreateRole>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <Replication>1</Replication>
+      <ConnectionLimit>-1</ConnectionLimit>
+      <BypassRls>1</BypassRls>
+    </role>
+    <role id="12" parent="1" name="wfmtest">
+      <ObjectId>16715</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+      <ValidUntil>infinity</ValidUntil>
+    </role>
+    <role id="13" parent="1" name="wftauth">
+      <ObjectId>16716</ObjectId>
+      <Inherit>1</Inherit>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+      <ValidUntil>infinity</ValidUntil>
+    </role>
+    <schema id="14" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2018-02-24.12:31:38.719</IntrospectionTimestamp>
+      <IntrospectionStateNumber>93486</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="15" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="16" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="17" parent="2" name="pg_temp_1">
+      <ObjectId>11816</ObjectId>
+    </schema>
+    <schema id="18" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11817</ObjectId>
+    </schema>
+    <schema id="19" parent="2" name="information_schema">
+      <ObjectId>12121</ObjectId>
+    </schema>
+    <sequence id="20" parent="14" name="hibernate_sequence">
+      <ObjectId>150452</ObjectId>
+      <StateNumber>93473</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <table id="21" parent="14" name="language_level">
+      <ObjectId>150454</ObjectId>
+      <StateNumber>93480</StateNumber>
+    </table>
+    <table id="22" parent="14" name="languages">
+      <ObjectId>150459</ObjectId>
+      <StateNumber>93479</StateNumber>
+    </table>
+    <table id="23" parent="14" name="my_user">
+      <ObjectId>150464</ObjectId>
+      <StateNumber>93486</StateNumber>
+    </table>
+    <table id="24" parent="14" name="sign_up">
+      <ObjectId>150472</ObjectId>
+      <StateNumber>93477</StateNumber>
+    </table>
+    <table id="25" parent="14" name="user_language_level">
+      <ObjectId>150480</ObjectId>
+      <StateNumber>93486</StateNumber>
+    </table>
+    <column id="26" parent="21" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>93474</StateNumber>
+    </column>
+    <column id="27" parent="21" name="level">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>93474</StateNumber>
+    </column>
+    <index id="28" parent="21" name="language_level_pkey">
+      <ObjectId>150457</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="29" parent="21" name="language_level_pkey">
+      <ObjectId>150458</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>language_level_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="30" parent="22" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>93475</StateNumber>
+    </column>
+    <column id="31" parent="22" name="language">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>93475</StateNumber>
+    </column>
+    <index id="32" parent="22" name="languages_pkey">
+      <ObjectId>150462</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="33" parent="22" name="languages_pkey">
+      <ObjectId>150463</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>languages_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="34" parent="23" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>93476</StateNumber>
+    </column>
+    <column id="35" parent="23" name="about_text">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>93476</StateNumber>
+    </column>
+    <column id="36" parent="23" name="city">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>93476</StateNumber>
+    </column>
+    <column id="37" parent="23" name="country_id">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>93476</StateNumber>
+    </column>
+    <column id="38" parent="23" name="email">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>93476</StateNumber>
+    </column>
+    <column id="39" parent="23" name="first_name">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>93476</StateNumber>
+    </column>
+    <column id="40" parent="23" name="last_name">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>93476</StateNumber>
+    </column>
+    <column id="41" parent="23" name="password">
+      <Position>8</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>93476</StateNumber>
+    </column>
+    <column id="42" parent="23" name="phone_number">
+      <Position>9</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>93476</StateNumber>
+    </column>
+    <column id="43" parent="23" name="region_state">
+      <Position>10</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>93476</StateNumber>
+    </column>
+    <column id="44" parent="23" name="user_name">
+      <Position>11</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>93476</StateNumber>
+    </column>
+    <index id="45" parent="23" name="my_user_pkey">
+      <ObjectId>150470</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="46" parent="23" name="my_user_pkey">
+      <ObjectId>150471</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>my_user_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="47" parent="24" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>93477</StateNumber>
+    </column>
+    <column id="48" parent="24" name="email">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>93477</StateNumber>
+    </column>
+    <column id="49" parent="24" name="hash_code">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>93477</StateNumber>
+    </column>
+    <column id="50" parent="24" name="password">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>93477</StateNumber>
+    </column>
+    <column id="51" parent="24" name="user_type_id">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>93477</StateNumber>
+    </column>
+    <column id="52" parent="24" name="username">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>93477</StateNumber>
+    </column>
+    <index id="53" parent="24" name="sign_up_pkey">
+      <ObjectId>150478</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="54" parent="24" name="sign_up_pkey">
+      <ObjectId>150479</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>sign_up_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="55" parent="25" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>93478</StateNumber>
+    </column>
+    <column id="56" parent="25" name="languages_id">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>93478</StateNumber>
+    </column>
+    <column id="57" parent="25" name="level_id">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>93478</StateNumber>
+    </column>
+    <column id="58" parent="25" name="user_id">
+      <Position>4</Position>
+      <DataType>bigint|0</DataType>
+      <StateNumber>93485</StateNumber>
+    </column>
+    <index id="59" parent="25" name="user_language_level_pkey">
+      <ObjectId>150483</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="60" parent="25" name="user_language_level_pkey">
+      <ObjectId>150484</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>user_language_level_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="61" parent="25" name="fk5am0yixdvc53r9d8jclf2ya6s">
+      <ObjectId>150485</ObjectId>
+      <ColNames>languages_id</ColNames>
+      <RefTableId>150459</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>languages</RefTableName>
+      <RefKeyName>languages_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="62" parent="25" name="fkl3m1qv918emh4o7dhcuaaol15">
+      <ObjectId>150490</ObjectId>
+      <ColNames>level_id</ColNames>
+      <RefTableId>150454</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>language_level</RefTableName>
+      <RefKeyName>language_level_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="63" parent="25" name="fkr9sylh7gc58dfv7hn5kxqjb88">
+      <ObjectId>150496</ObjectId>
+      <ColNames>user_id</ColNames>
+      <RefTableId>150464</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>my_user</RefTableName>
+      <RefKeyName>my_user_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreelancerFillingApplication</title>
+
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}" type="text/css">
+    <link rel="stylesheet" href="../static/fonts/ionicons.min.css" th:href="@{/fonts/ionicons.min.css}" type="text/css">
+    <link rel="stylesheet" href="../static/css/Footer-Clean.css" th:href="@{/css/Footer-Clean.css}" type="text/css">
+    <link rel="stylesheet" href="../static/css/Navigation-with-Button.css" th:href="@{/css/Navigation-with-Button.css}" type="text/css">
+    <link rel="stylesheet" href="../static/css/Registration-Form-with-Photo.css" th:href="@{/css/Registration-Form-with-Photo.css}" type="text/css">
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}" type="text/css">
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-dark navbar-expand-md bg-success navigation-clean-button" style="background-color:#66d7d7;">
+            <div class="container">
+                <a class="navbar-brand" href="#">Company Name</a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse"
+                    id="navcol-1">
+                    <ul class="nav navbar-nav mr-auto"></ul><span class="navbar-text actions"> <a href="#" class="login">Log In</a><a class="btn btn-light action-button" role="button" href="#">Sign Up</a></span></div>
+            </div>
+        </nav>
+    </div>
+    <div style="height:1365px;background-color:rgba(0,0,0,0.1);padding-top:17px;">
+        <div style="margin:0px;height:1327px;background-color:#f7f9fc;padding:0px;width:940px;align-items:center;margin-left:26px;align:center;/*float:initial;*/position:inherit;margin-left:auto;margin-right:auto;">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="width:298px;">
+                                <img style="width:200px;height:200px;margin:27px;margin-left:56px;">
+                                <!--<form method="POST" action="/auth/upload" enctype="multipart/form-data">-->
+                                    <!--<input type="file" name="file" />-->
+                                    <!--<br />-->
+                                    <!--<br />-->
+                                    <input class="btn btn-primary"  type="submit" value="Choose file" style="margin-left:102px;height:29px;font-size:14px;padding:0px;width:112px;margin-top:12px;float:left;align-items:center;background-color:#56c6c6;"/>
+                                <!--</form>-->
+                            </td>
+                            <td style="width:248px;">
+                                <label style="margin-right:10px;width:225px;margin-top:40px">Email address: (not changable)</label><br/>
+                                <label style="margin-right:10px;width:210px;margin-top:10px;">Username:  (not changable)</label>
+                                <label style="margin-right:10px;width:210px;margin-top:10px;">First name:<br></label>
+                                <label style="margin-right:10px;width:160px;margin-top:10px;">Last name:<br></label>
+                                <label
+                                    style="margin-right:40px;width:160px;margin-top:10px;">Phone number:<br></label>
+                                    </td>
+                                    <td><input type="text" th:value="${email}" readonly="readonly" style="width:300px;margin-top:40px;">
+                                        <input type="text" th:value="${username}" readonly="readonly" style="width:300px;margin-top:10px;">
+                                        <input type="text" style="width:300px;margin-top:10px;">
+                                        <input type="text" style="width:300px;margin-top:10px;">
+                                        <input type="text" style="width:300px;margin-top:10px;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="height:156px;background-color:#f7f9fc;">
+                <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">Languages</h1>
+                <div style="width:33%;color:rgb(44,129,214);height:129px;background-color:#f7f9fc;float:left;"><select style="margin-left:42px;margin-top:20px;width:251px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
+                    <button
+                        class="btn btn-primary" type="button" style="height:27px;margin-left:239px;margin-top:15px;background-color:#56c6c6;font-size:14px;padding:0px;width:51px;">Add</button>
+                </div>
+                <div style="width:64%;color:rgb(24,95,166);height:129px;background-color:#f7f9fc;float:right;margin-right:0px;">
+                    <div class="table-responsive" style="margin-right:60px;width:537px;">
+                        <table class="table">
+                            <thead>
+                                <tr></tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border:0;">
+                                    <td style="height:50%;padding:8px;width:245px;border:0;"><label style="float:left;margin-top:6px;">English:</label><a href="#" style="float:none;margin-top:10px;padding-top:0px;">X</a><select style="margin-left:15px;margin-top:7px;width:160px;float:right;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></td>
+                                    <td
+                                        style="height:50%;padding:8px;width:237px;border:0;"><label style="float:left;margin-top:6px;">English:</label><a href="#" style="float:none;margin-top:15px;padding-top:0px;">X</a><select style="margin-left:15px;margin-top:7px;width:160px;float:right;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></td>
+                                </tr>
+                                <tr></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div style="background-color:#f7f9fc;height:175px;">
+                <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">Address</h1><label style="margin-right:-55px;width:175px;margin-top:10px;margin-left:37px;">City:<br></label><input type="text"><label style="margin-right:-9px;width:160px;margin-top:10px;margin-left:71px;">Region/State:<br></label>
+                <input
+                    type="text" style="width:300px;"><label style="margin-right:-9px;width:160px;margin-top:10px;margin-left:425px;">Country:<br></label><select style="margin-left:0px;margin-top:20px;width:301px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+            <div
+                style="height:183px;">
+                <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">Address</h1><textarea style="margin-left:48px;width:830px;height:92px;font-size:14px;"></textarea></div>
+        <div style="height:270px;">
+            <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">Skills</h1>
+            <div style="height:200px;background-color:#f7f9fc;width:35%;float:left;"><select style="margin-left:49px;width:229px;height:28px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select><select multiple style="margin-left:49px;margin-top:15px;width:230px; height:150px"><optgroup label="This is a group"><option value="12" selected>This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+            <div
+                style="width:59%;float:left;height:194px;background-color:#dddddd;margin-left:0px;"><label style="float:left;margin-top:7px;margin-left:45px;">English:</label><a href="#" style="float:none;margin-top:0px;padding-top:0px;vertical-align:middle;">X</a></div>
+    </div>
+    <div style="height:127px;background-color:#f7f9fc;width:940px;">
+        <div style="height:125px;background-color:#f7f9fc;float:left;width:35%;">
+            <h1 style="font-size:28px;padding-top:2px;padding-left:42px;height:49px;width:236px;float:left;">Attached files</h1><button class="btn btn-primary" type="button" style="margin-left:72px;height:29px;font-size:14px;padding:0px;width:112px;margin-top:12px;float:left;background-color:#56c6c6;">Choose file</button></div>
+        <div style="background-color:#dddddd;height:126px;float:left;width:59%;"></div>
+    </div><button class="btn btn-primary" type="button" style="float:right;padding-right:10px;margin-right:55px;margin-top:21px;width:204px;background-color:#56c6c6;">Submit</button></div>
+    </div>
+    <div class="footer-clean" style="color:#fff;background-color:#28a745;">
+        <footer>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-sm-4 col-md-3 item">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#">Web design</a></li>
+                            <li><a href="#">Development</a></li>
+                            <li><a href="#">Hosting</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Legacy</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 col-md-3 item">
+                        <h3>Careers</h3>
+                        <ul>
+                            <li><a href="#">Job openings</a></li>
+                            <li><a href="#">Employee success</a></li>
+                            <li><a href="#">Benefits</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
+                        <p class="copyright">Company Name © 2017</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../static/js/jquery.min.js" th:href="@{/js/jquery.min.css}" type="text/css"></script>
+    <script src="../static/bootstrap/js/bootstrap.min.js" th:href="@{/js/bootstrap.min.css}" type="text/css"></script>
+
+</body>
+
+</html>
