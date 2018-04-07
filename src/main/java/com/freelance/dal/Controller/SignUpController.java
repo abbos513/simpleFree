@@ -18,7 +18,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/signUp")
 public class SignUpController {
 
 //    @Autowired
@@ -66,6 +66,30 @@ public class SignUpController {
 //            return false;
 //        }
 //        return false;
+//    }
+
+
+//    private static String UPLOAD_FOLDER = "/home/abbos513/Documents/IdeaProjects/freelance/src/main/resources/userFiles/";
+//
+//
+//    @PostMapping("/upload")
+//    public int fileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes, Model model) {
+//
+//         String fileLocation = "/home/abbos513/Desktop/Abbos Abdukodirov photo.jpeg";
+//
+//        try {
+//            // read and write the file to the selected location-
+//            byte[] bytes = file.getBytes();
+//            Path path = Paths.get(UPLOAD_FOLDER + file.getOriginalFilename());
+//            Files.write(path, bytes);
+//
+//            fileLocation = path.toString();
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return 1;
 //    }
 
 }

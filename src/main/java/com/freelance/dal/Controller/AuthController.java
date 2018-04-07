@@ -1,8 +1,12 @@
 package com.freelance.dal.Controller;
 
+import com.freelance.dal.Entity.LanguageLevel;
+import com.freelance.dal.Entity.Languages;
 import com.freelance.dal.Entity.MyUser;
 import com.freelance.dal.Model.LogInViewModel;
 import com.freelance.dal.Model.SignUpViewModel;
+import com.freelance.dal.Repository.LanguagesRepository;
+import com.freelance.dal.Service.LanguageService;
 import com.freelance.dal.Service.SignUpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,19 +16,29 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 
-//
-//import java.io.IOException;
-//import java.nio.file.Files;
-//import java.nio.file.Path;
-//import java.nio.file.Paths;
-//
-//import org.springframework.stereotype.Controller;
-//import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestParam;
-//import org.springframework.web.multipart.MultipartFile;
-//import org.springframework.web.servlet.ModelAndView;
-//import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
 
 @Controller
 @RequestMapping(value = "/auth")
@@ -32,6 +46,8 @@ public class AuthController {
 
     @Autowired
     private SignUpService signUpService;
+    @Autowired
+    private LanguagesRepository languagesRepository;
 
     @RequestMapping(value = "/SignUp", method = RequestMethod.GET)
     public ModelAndView showSignUpForm() {
@@ -65,12 +81,40 @@ public class AuthController {
         if (user != null){
             model.addAttribute("email", user.getEmail());
             model.addAttribute("username", user.getUserName());
+            model.addAttribute("id", user.getId());
+//            model.addAttribute(" ", languageService.getAllLanguages());
+            model.addAttribute("languages", languagesRepository.findAll());
             return new ModelAndView("FreelancerFill");
+
         }else{
             model.addAttribute("massage", "Username or Password is incorrect");
             return new ModelAndView("LogIn");
         }
     }
 
+    private static String UPLOAD_FOLDER = "/home/abbos513/Documents/IdeaProjects/freelance/src/main/resources/static/userFiles/";
+
+
+    @PostMapping("/upload")
+    public ModelAndView fileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes, Model model) {
+
+//        String fileLocation = "/home/abbos513/Desktop/";
+
+        try {
+            // read and write the file to the selected location-
+            byte[] bytes = file.getBytes();
+//            String extension = file.getContentType();
+            Path path = Paths.get(UPLOAD_FOLDER + "1.jpg");
+            Files.write(path, bytes);
+
+//            fileLocation = path.toString();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return new ModelAndView("FreelancerFill");
+    }
 
 }
