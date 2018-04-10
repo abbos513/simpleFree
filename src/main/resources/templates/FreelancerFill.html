@@ -86,7 +86,7 @@
                             <!--th:value="${language}"-->
                             <!--th:text="#{${'seedstarter.language.' + language}}">Wireframe</option>-->
                 <!--</select>-->
-                <button class="btn btn-primary" type="button" style="height:27px;margin-left:239px;margin-top:15px;background-color:#56c6c6;font-size:14px;padding:0px;width:51px;">
+                <button  onclick="myFunction()" class="btn btn-primary" style="height:27px;margin-left:239px;margin-top:15px;background-color:#56c6c6;font-size:14px;padding:0px;width:51px;">
                     Add
                 </button>
             </div>
@@ -97,22 +97,23 @@
                         <tr></tr>
                         </thead>
                         <tbody>
-                        <tr style="border:0;">
-                            <td style="height:50%;padding:8px;width:245px;border:0;"><label
-                                    style="float:left;margin-top:6px;">English:</label><a href="#"
-                                                                                          style="float:none;margin-top:10px;padding-top:0px;">X</a><select
-                                    style="margin-left:15px;margin-top:7px;width:160px;float:right;">
-                                <optgroup label="This is a group">
-                                    <option value="12" selected="">This is item 1</option>
-                                    <option value="13">This is item 2</option>
-                                    <option value="14">This is item 3</option>
-                                </optgroup>
-                            </select></td>
-                            <td
-                                    style="height:50%;padding:8px;width:237px;border:0;"><label
-                                    style="float:left;margin-top:6px;">English:</label><a href="#"
-                                                                                          style="float:none;margin-top:15px;padding-top:0px;">X</a><select
-                                    style="margin-left:15px;margin-top:7px;width:160px;float:right;">
+                        <tr id="tablerow" style="border:0;">
+
+                            <!--<td style="height:50%;padding:8px;width:245px;border:0;">-->
+                                <!--<label style="float:left;margin-top:6px;">English:</label>-->
+                                <!--<a href="#" style="float:none;margin-top:10px;padding-top:0px;">X</a>-->
+                                <!--<select style="margin-left:15px;margin-top:7px;width:160px;float:right;">-->
+                                <!--<optgroup label="This is a group">-->
+                                    <!--<option value="12" selected="">This is item 1</option>-->
+                                    <!--<option value="13">This is item 2</option>-->
+                                    <!--<option value="14">This is item 3</option>-->
+                                <!--</optgroup>-->
+                            <!--</select>-->
+                            <!--</td>-->
+
+                            <td style="height:50%;padding:8px;width:237px;border:0;"><label style="float:left;margin-top:6px;">English:</label>
+                                <a href="#" style="float:none;margin-top:15px;padding-top:0px;">X</a>
+                                <select style="margin-left:15px;margin-top:7px;width:160px;float:right;">
                                 <optgroup label="This is a group">
                                     <option value="12" selected="">This is item 1</option>
                                     <option value="13">This is item 2</option>
@@ -228,6 +229,20 @@
     function imageClick() {
         document.getElementById("demo").outerHTML = "" +
             "<img style=\"width:200px;height:200px;margin:27px;margin-left:56px;\" src="userFiles/LinktoPicturesAbbosAbdukodirovphoto.jpeg"/>\n";
+    }
+
+    function myFunction() {
+        var y = document.getElementById("tablerow").innerHTML;
+        var x = document.getElementById("tablerow").innerHTML = "<tr><td style=\"height:50%;padding:8px;width:237px;border:0;\"><label style=\"float:left;margin-top:6px;\">English:</label>\n" +
+            "                                <a href=\"#\" style=\"float:none;margin-top:15px;padding-top:0px;\">X</a>\n" +
+            "                                <select style=\"margin-left:15px;margin-top:7px;width:160px;float:right;\">\n" +
+            "                                <optgroup label=\"This is a group\">\n" +
+            "                                    <option value=\"12\" selected=\"\">This is item 1</option>\n" +
+            "                                    <option value=\"13\">This is item 2</option>\n" +
+            "                                    <option value=\"14\">This is item 3</option>\n" +
+            "                                </optgroup>\n" +
+            "                            </select></td></tr>";
+        document.getElementById("tablerow").innerHTML = y + x;
     }
 </script>
 </body>
