@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../static/css/Registration-Form-with-Photo.css"
           th:href="@{/css/Registration-Form-with-Photo.css}" type="text/css">
     <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}" type="text/css">
+
 </head>
 
 <body>
@@ -74,21 +75,28 @@
         <div style="height:156px;background-color:#f7f9fc;">
             <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">Languages</h1>
             <div style="width:33%;color:rgb(44,129,214);height:129px;background-color:#f7f9fc;float:left;">
-                <select style="margin-left:42px;margin-top:20px;width:251px;">
-                    <optgroup label="This is a group">
-                        <th:block th:each="language1 : ${languages}">
-                            <option th:value="${language1.getId()}" th:text="${language1.getLanguage()}"></option>
-                        </th:block>
-                    </optgro up>
-                </select>
-                <!--<select th:field="*{languages}">-->
-                    <!--<option th:each="type : ${languages}"-->
-                            <!--th:value="${language}"-->
-                            <!--th:text="#{${'seedstarter.language.' + language}}">Wireframe</option>-->
-                <!--</select>-->
-                <button  onclick="myFunction()" class="btn btn-primary" style="height:27px;margin-left:239px;margin-top:15px;background-color:#56c6c6;font-size:14px;padding:0px;width:51px;">
-                    Add
-                </button>
+
+                <script>
+                    var languages = [];
+                    function addList() {
+                        var d = document.getElementById("languageId").value;
+                        // alert(d).toString();
+                        if(!languages.includes(d)){
+                            languages.push(d);
+                        }
+                        console.log(!languages.includes(d));
+                        console.log(languages);
+                    }
+                </script>
+                    <select id="languageId" style="margin-left:42px;margin-top:20px;width:251px;">
+                        <!--<optgroup label="This is a group">-->
+                            <th:block th:each="language1 : ${languages}">
+                                <option th:value="${language1.getId()}" th:text="${language1.getLanguage()}"></option>
+                            </th:block>
+                            <!--</optgro up>-->
+                    </select>
+                    <input class="btn btn-primary" onclick="addList()" type="button" value="Add"/>
+
             </div>
             <div style="width:64%;color:rgb(24,95,166);height:129px;background-color:#f7f9fc;float:right;margin-right:0px;">
                 <div class="table-responsive" style="margin-right:60px;width:537px;">
@@ -97,23 +105,22 @@
                         <tr></tr>
                         </thead>
                         <tbody>
-                        <tr id="tablerow" style="border:0;">
-
-                            <!--<td style="height:50%;padding:8px;width:245px;border:0;">-->
-                                <!--<label style="float:left;margin-top:6px;">English:</label>-->
-                                <!--<a href="#" style="float:none;margin-top:10px;padding-top:0px;">X</a>-->
-                                <!--<select style="margin-left:15px;margin-top:7px;width:160px;float:right;">-->
-                                <!--<optgroup label="This is a group">-->
-                                    <!--<option value="12" selected="">This is item 1</option>-->
-                                    <!--<option value="13">This is item 2</option>-->
-                                    <!--<option value="14">This is item 3</option>-->
-                                <!--</optgroup>-->
-                            <!--</select>-->
-                            <!--</td>-->
-
-                            <td style="height:50%;padding:8px;width:237px;border:0;"><label style="float:left;margin-top:6px;">English:</label>
-                                <a href="#" style="float:none;margin-top:15px;padding-top:0px;">X</a>
-                                <select style="margin-left:15px;margin-top:7px;width:160px;float:right;">
+                        <tr style="border:0;">
+                            <td style="height:50%;padding:8px;width:245px;border:0;"><label
+                                    style="float:left;margin-top:6px;">English:</label><a href="#"
+                                                                                          style="float:none;margin-top:10px;padding-top:0px;">X</a><select
+                                    style="margin-left:15px;margin-top:7px;width:160px;float:right;">
+                                <optgroup label="This is a group">
+                                    <option value="12" selected="">This is item 1</option>
+                                    <option value="13">This is item 2</option>
+                                    <option value="14">This is item 3</option>
+                                </optgroup>
+                            </select></td>
+                            <td
+                                    style="height:50%;padding:8px;width:237px;border:0;"><label
+                                    style="float:left;margin-top:6px;">English:</label><a href="#"
+                                                                                          style="float:none;margin-top:15px;padding-top:0px;">X</a><select
+                                    style="margin-left:15px;margin-top:7px;width:160px;float:right;">
                                 <optgroup label="This is a group">
                                     <option value="12" selected="">This is item 1</option>
                                     <option value="13">This is item 2</option>
@@ -226,25 +233,14 @@
 <script src="../static/bootstrap/js/bootstrap.min.js" th:href="@{/js/bootstrap.min.css}" type="text/css"></script>
 
 <script>
+
+
     function imageClick() {
         document.getElementById("demo").outerHTML = "" +
             "<img style=\"width:200px;height:200px;margin:27px;margin-left:56px;\" src="userFiles/LinktoPicturesAbbosAbdukodirovphoto.jpeg"/>\n";
     }
-
-    function myFunction() {
-        var y = document.getElementById("tablerow").innerHTML;
-        var x = document.getElementById("tablerow").innerHTML = "<tr><td style=\"height:50%;padding:8px;width:237px;border:0;\"><label style=\"float:left;margin-top:6px;\">English:</label>\n" +
-            "                                <a href=\"#\" style=\"float:none;margin-top:15px;padding-top:0px;\">X</a>\n" +
-            "                                <select style=\"margin-left:15px;margin-top:7px;width:160px;float:right;\">\n" +
-            "                                <optgroup label=\"This is a group\">\n" +
-            "                                    <option value=\"12\" selected=\"\">This is item 1</option>\n" +
-            "                                    <option value=\"13\">This is item 2</option>\n" +
-            "                                    <option value=\"14\">This is item 3</option>\n" +
-            "                                </optgroup>\n" +
-            "                            </select></td></tr>";
-        document.getElementById("tablerow").innerHTML = y + x;
-    }
 </script>
+
 </body>
 
 </html>
