@@ -3,6 +3,7 @@ package com.freelance.dal.Controller;
 import com.freelance.dal.Entity.MyUser;
 import com.freelance.dal.Model.LogInViewModel;
 import com.freelance.dal.Model.SignUpViewModel;
+import com.freelance.dal.Repository.LanguageLevelRepository;
 import com.freelance.dal.Repository.LanguagesRepository;
 import com.freelance.dal.Service.SignUpService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,8 @@ public class AuthController {
     private SignUpService signUpService;
     @Autowired
     private LanguagesRepository languagesRepository;
+    @Autowired
+    private LanguageLevelRepository languageLevelRepository;
 
     @RequestMapping(value = "/SignUp", method = RequestMethod.GET)
     public ModelAndView showSignUpForm() {
@@ -67,7 +70,7 @@ public class AuthController {
             model.addAttribute("email", user.getEmail());
             model.addAttribute("username", user.getUserName());
             model.addAttribute("id", user.getId());
-//            model.addAttribute(" ", languageService.getAllLanguages());
+            model.addAttribute("languageLevel", languageLevelRepository.findAll());
             model.addAttribute("languages", languagesRepository.findAll());
             return new ModelAndView("FreelancerFill");
 

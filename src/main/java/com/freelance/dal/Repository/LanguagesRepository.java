@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface LanguagesRepository extends CrudRepository<Languages, Long> {
     public Iterable<Languages> findAll();
+//    public Languages findAllById(Long id);
 }

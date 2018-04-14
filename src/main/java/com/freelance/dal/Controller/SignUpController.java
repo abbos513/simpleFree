@@ -3,6 +3,7 @@ package com.freelance.dal.Controller;
 import com.freelance.dal.Entity.Login;
 import com.freelance.dal.Entity.MyUser;
 import com.freelance.dal.Entity.SignUp;
+import com.freelance.dal.Repository.SignUpRepository;
 import com.freelance.dal.Service.SignUpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -26,6 +27,14 @@ public class SignUpController {
 //
 //    @Autowired
 //    private SignUpService signUpService;
+//
+//    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+//    public boolean login(@RequestBody Login login){
+//        return signUpService.isUserExsist(login);
+//    }
+//
+
+
 
 //    @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
 //    public String signUp(@RequestBody SignUp signUp){
@@ -44,10 +53,7 @@ public class SignUpController {
 //            return "Email verification failed";
 //    }
 
-//    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public boolean login(@RequestBody Login login){
-//        return signUpService.isUserExsist(login);
-//    }
+
 
 //    @RequestMapping(name = "upload", method = RequestMethod.POST)
 //    public boolean fileUpload(@RequestParam("file") MultipartFile file){
