@@ -83,19 +83,6 @@
         <div style="height:156px;background-color:#f7f9fc;">
             <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">Languages</h1>
             <div style="width:33%;color:rgb(44,129,214);height:129px;background-color:#f7f9fc;float:left;">
-
-                <script>
-                    var languages = [];
-                    function addList() {
-                        var d = document.getElementById("languageId").value;
-                        // alert(d).toString();
-                        if(!languages.includes(d)){
-                            languages.push(d);
-                        }
-                        console.log(!languages.includes(d));
-                        console.log(languages);
-                    }
-                </script>
                     <select id="languageId" style="margin-left:42px;margin-top:20px;width:251px;">
                         <!--<optgroup label="This is a group">-->
                             <th:block th:each="language1 : ${languages}">
@@ -123,8 +110,10 @@
                         <tr></tr>
                         </thead>
                         <tbody>
-                        <tr id="showList" style="border:0;">
+                        <tr style="border:0;">
+                            <div id="showList" width="100%" style="background: darkgrey;">
 
+                            </div>
                         </tr>
                         <tr></tr>
                         </tbody>
@@ -250,8 +239,11 @@
     var lanid = [];
     var lanName = [];
 
-    var username = [[${languages}]];
-    console.log(username);
+    var lan = [[${languages}]];
+    var lev = [[${languageLevel}]];
+    console.log(lan);
+    console.log(lev);
+
 
     // $(function () {
     //     for(th:each="language1 : ${languages}){
@@ -265,41 +257,51 @@
 
     $(function () {
             $("#btnAddLanToArray").click(function () {
+
                 var lanId = $("#languageId").val();
                 var levelId = $("#levelId").val();
-
-                var lan = $("#languageId").text();
-                var level = $("#levelId").text();
 
                 if(!lanIdArr.includes(lanId)){
                     lanIdArr.push(lanId);
                     levelIdArr.push(levelId);
-
-                    lanArr.push(lan);
-                    levelArr.push(level);
-                }
+                }// adding ids to arrays
 
 
-                debugger;
+                // debugger;
 
-                console.log(lanIdArr.length);
-                console.log(lanIdArr, levelIdArr);
-                console.log(lanArr, levelArr);
+
                 $("#showList").html("");
                 for(let i=0; i<lanIdArr.length; i++){
                     var lanId1 = lanIdArr[i];
                     var levelId1 = levelIdArr[i];
 
+                    var lanName= lan.filter(function(e) {
+                        return e.id == lanId1;
+                    });
+
+                    var levelName = lev.filter(function(e) {
+                        return e.id == levelId1;
+                    });
+
+                    var name = lanName[0].language;
+                    var level = levelName[0].level;
+
+                    var levelId1 = levelIdArr[i];
+
                     var exsistList = $("#showList").html();
 
-                    $("#showList").html(exsistList + lanId1 + levelId1);
+                    $("#showList").html("id="remove"" + exsistList + name + "  " + level + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp");
 
                 }
-                console.log(lanIdArr +"   " + levelIdArr);
-
-                console.log(lanIdArr +"   " + levelIdArr);
+                // console.log(lanIdArr +"   " + levelIdArr);
+                //
+                // console.log(lanIdArr +"   " + levelIdArr);
             });
 
+        $("#remove")[0].click(function () {
+
+
+        });
         });
 
 </script>
