@@ -82,8 +82,8 @@
         </div>
         <div style="height:156px;background-color:#f7f9fc;">
             <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">Languages</h1>
-            <div style="width:33%;color:rgb(44,129,214);height:129px;background-color:#f7f9fc;float:left;">
-                    <select id="languageId" style="margin-left:42px;margin-top:20px;width:251px;">
+            <div style="width:25%;color:rgb(44,129,214);height:129px;background-color:#f7f9fc;float:left;">
+                    <select id="languageId" style="margin-left:42px;margin-top:20px;width:150px;">
                         <!--<optgroup label="This is a group">-->
                             <th:block th:each="language1 : ${languages}">
                                 <option th:value="${language1.getId()}" th:text="${language1.getLanguage()}"></option>
@@ -91,7 +91,7 @@
                             <!--</optgro up>-->
                     </select>
 
-                    <select id="levelId" style="margin-left:42px;margin-top:20px;width:251px;">
+                    <select id="levelId" style="margin-left:42px;margin-top:20px;width:150px;">
                         <!--<optgroup label="This is a group">-->
                         <th:block th:each="level : ${languageLevel}">
                             <option th:value="${level.getId()}" th:text="${level.getLevel()}"></option>
@@ -103,23 +103,26 @@
 
             </div>
 
-            <div style="width:64%;color:rgb(24,95,166);height:129px;background-color:#f7f9fc;float:right;margin-right:0px;">
-                <div class="table-responsive" style="margin-right:60px;width:537px;">
-                    <table class="table">
+            <div style="width:75%;color:rgb(24,95,166);height:100px;background-color:red;float:right;margin-right:0px;">
+                <div class="table-responsive" style="margin-right:60px;width:100%;">
+                    <table class="table" style="width: 100%;">
                         <thead>
                         <tr></tr>
                         </thead>
                         <tbody>
-                        <tr style="border:0;">
-                            <div id="showList" width="100%" style="background: darkgrey;">
+                        <tr style="border:0;background: #0062cc;">
+                            <div id="showList" style="background: blue; width: 100%; margin-top: 20px;">
 
                             </div>
+
                         </tr>
                         <tr></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+            <input id="remove1" class="btn btn-primary" type="button" style="margin-top: 7px; float: right; margin-right: 78px;" value="Remove All"/>
+
         </div>
         <div style="background-color:#f7f9fc;height:175px; margin-top: 60px;">
             <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">Address</h1><label
@@ -141,8 +144,8 @@
                 style="margin-left:48px;width:830px;height:92px;font-size:14px;"></textarea></div>
         <div style="height:270px;">
             <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">Skills</h1>
-            <div style="height:200px;background-color:#f7f9fc;width:35%;float:left;"><select
-                    style="margin-left:49px;width:229px;height:28px;">
+            <div style="height:200px;background-color:#f7f9fc;width:35%;float:left;">
+                <select style="margin-left:49px;width:229px;height:28px;">
                 <optgroup label="This is a group">
                     <option value="12" selected="">This is item 1</option>
                     <option value="13">This is item 2</option>
@@ -230,19 +233,18 @@
 
 
 <script type="text/javascript" th:inline="javascript">
-    var lanIdArr = [];
+    var lanIdArr = [];// arrays to keep languges and level IDs
     var levelIdArr = [];
 
-    lanArr = [];
-    levelArr = [];
+    // lanArr = [];
+    // levelArr = [];
 
-    var lanid = [];
-    var lanName = [];
+    // var lanid = [];
+    // var lanName = [];
 
-    var lan = [[${languages}]];
+    var lan = [[${languages}]]; // model objects converted to javascript objects
     var lev = [[${languageLevel}]];
-    console.log(lan);
-    console.log(lev);
+
 
 
     // $(function () {
@@ -253,16 +255,16 @@
     //     }
     // });
 
-    console.log(lanid + "    " + lanName);
+    // console.log(lanid + "    " + lanName);
 
     $(function () {
             $("#btnAddLanToArray").click(function () {
 
-                var lanId = $("#languageId").val();
+                var lanId = $("#languageId").val(); // getting lan and level IDs
                 var levelId = $("#levelId").val();
 
-                if(!lanIdArr.includes(lanId)){
-                    lanIdArr.push(lanId);
+                if(!lanIdArr.includes(lanId)){// checking if languages exsist in array
+                    lanIdArr.push(lanId);// if does not thern add language id
                     levelIdArr.push(levelId);
                 }// adding ids to arrays
 
@@ -271,26 +273,26 @@
 
 
                 $("#showList").html("");
-                for(let i=0; i<lanIdArr.length; i++){
-                    var lanId1 = lanIdArr[i];
+                for(let i=0; i<lanIdArr.length; i++){// getting ech language id and find lan name by language id
+                    var lanId1 = lanIdArr[i]; //
                     var levelId1 = levelIdArr[i];
 
                     var lanName= lan.filter(function(e) {
-                        return e.id == lanId1;
+                        return e.id == lanId1; // getting language by id
                     });
 
                     var levelName = lev.filter(function(e) {
-                        return e.id == levelId1;
+                        return e.id == levelId1;// getting level by id
                     });
 
-                    var name = lanName[0].language;
-                    var level = levelName[0].level;
+                    var name = lanName[0].language;//getting language name`s language value
+                    var level = levelName[0].level;// the same with level
 
-                    var levelId1 = levelIdArr[i];
+                    // var levelId1 = levelIdArr[i];
 
-                    var exsistList = $("#showList").html();
+                    var exsistList = $("#showList").html();// getting exsisting html
 
-                    $("#showList").html("id="remove"" + exsistList + name + "  " + level + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp");
+                    $("#showList").html(exsistList + '<div id="remove" style="width: 33%; float: left;"> ' + name + " "+ level + " " + '</div>'); // adding new elements to exsisting html
 
                 }
                 // console.log(lanIdArr +"   " + levelIdArr);
@@ -298,11 +300,24 @@
                 // console.log(lanIdArr +"   " + levelIdArr);
             });
 
-        $("#remove")[0].click(function () {
+
+            // removing functions
+            // $("$remove")[0].hide();
+        // debugger;
+        //     var a = $("#aaa").val();
+        //     console.log(a);
 
 
+        debugger;
+        $("#remove1").click(function () {
+            lanIdArr = [];
+            levelIdArr = [];
+            console.log(lanIdArr+" " + levelIdArr);
+            $("#showList").html("");
+            });
         });
-        });
+
+
 
 </script>
 
