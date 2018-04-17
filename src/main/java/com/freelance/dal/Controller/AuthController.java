@@ -1,10 +1,12 @@
 package com.freelance.dal.Controller;
 
 import com.freelance.dal.Entity.MyUser;
+import com.freelance.dal.Entity.Skill;
 import com.freelance.dal.Model.LogInViewModel;
 import com.freelance.dal.Model.SignUpViewModel;
 import com.freelance.dal.Repository.LanguageLevelRepository;
 import com.freelance.dal.Repository.LanguagesRepository;
+import com.freelance.dal.Repository.SkillRepository;
 import com.freelance.dal.Service.SignUpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +39,8 @@ public class AuthController {
     private LanguagesRepository languagesRepository;
     @Autowired
     private LanguageLevelRepository languageLevelRepository;
+    @Autowired
+    private SkillRepository skillRepository;
 
     @RequestMapping(value = "/SignUp", method = RequestMethod.GET)
     public ModelAndView showSignUpForm() {
@@ -72,8 +77,13 @@ public class AuthController {
             model.addAttribute("id", user.getId());
             model.addAttribute("languageLevel", languageLevelRepository.findAll());
             model.addAttribute("languages", languagesRepository.findAll());
-            return new ModelAndView("FreelancerFill");
 
+            Iterable<Skill> writingSkills = skillRepository.findByType("Writing");
+            Iterable<Skill> programmingSkills = skillRepository.findByType("Programming");
+            model.addAttribute("writing", writingSkills);
+            model.addAttribute("programming", programmingSkills);
+
+            return new ModelAndView("FreelancerFill");
         }else{
             model.addAttribute("massage", "Username or Password is incorrect");
             return new ModelAndView("LogIn");

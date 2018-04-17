@@ -43,8 +43,8 @@
     </role>
     <schema id="11" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-04-11.00:46:39.060</IntrospectionTimestamp>
-      <IntrospectionStateNumber>1538</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-04-17.17:58:44.172</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1547</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -85,207 +85,241 @@
       <ObjectId>17780</ObjectId>
       <StateNumber>1527</StateNumber>
     </table>
-    <table id="22" parent="11" name="user_language_level">
+    <table id="22" parent="11" name="skill">
+      <ObjectId>17820</ObjectId>
+      <StateNumber>1547</StateNumber>
+    </table>
+    <table id="23" parent="11" name="user_language_level">
       <ObjectId>17800</ObjectId>
       <StateNumber>1538</StateNumber>
     </table>
-    <column id="23" parent="18" name="id">
+    <column id="24" parent="18" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1532</StateNumber>
     </column>
-    <column id="24" parent="18" name="level">
+    <column id="25" parent="18" name="level">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1532</StateNumber>
     </column>
-    <index id="25" parent="18" name="language_level_pkey">
+    <index id="26" parent="18" name="language_level_pkey">
       <ObjectId>17793</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="26" parent="18" name="language_level_pkey">
+    <key id="27" parent="18" name="language_level_pkey">
       <ObjectId>17794</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>language_level_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="27" parent="19" name="id">
+    <column id="28" parent="19" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1533</StateNumber>
     </column>
-    <column id="28" parent="19" name="language">
+    <column id="29" parent="19" name="language">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1533</StateNumber>
     </column>
-    <index id="29" parent="19" name="languages_pkey">
+    <index id="30" parent="19" name="languages_pkey">
       <ObjectId>17798</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="30" parent="19" name="languages_pkey">
+    <key id="31" parent="19" name="languages_pkey">
       <ObjectId>17799</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>languages_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="31" parent="20" name="id">
+    <column id="32" parent="20" name="id">
       <Position>1</Position>
       <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1526</StateNumber>
     </column>
-    <column id="32" parent="20" name="about_text">
+    <column id="33" parent="20" name="about_text">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1526</StateNumber>
     </column>
-    <column id="33" parent="20" name="city">
+    <column id="34" parent="20" name="city">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1526</StateNumber>
     </column>
-    <column id="34" parent="20" name="country_id">
+    <column id="35" parent="20" name="country_id">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1526</StateNumber>
     </column>
-    <column id="35" parent="20" name="email">
+    <column id="36" parent="20" name="email">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1526</StateNumber>
     </column>
-    <column id="36" parent="20" name="first_name">
+    <column id="37" parent="20" name="first_name">
       <Position>6</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1526</StateNumber>
     </column>
-    <column id="37" parent="20" name="language">
+    <column id="38" parent="20" name="language">
       <Position>7</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1526</StateNumber>
     </column>
-    <column id="38" parent="20" name="last_name">
+    <column id="39" parent="20" name="last_name">
       <Position>8</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1526</StateNumber>
     </column>
-    <column id="39" parent="20" name="password">
+    <column id="40" parent="20" name="password">
       <Position>9</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1526</StateNumber>
     </column>
-    <column id="40" parent="20" name="phone_number">
+    <column id="41" parent="20" name="phone_number">
       <Position>10</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1526</StateNumber>
     </column>
-    <column id="41" parent="20" name="refian_state">
+    <column id="42" parent="20" name="refian_state">
       <Position>11</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1526</StateNumber>
     </column>
-    <column id="42" parent="20" name="user_name">
+    <column id="43" parent="20" name="user_name">
       <Position>12</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1526</StateNumber>
     </column>
-    <column id="43" parent="20" name="region_state">
+    <column id="44" parent="20" name="region_state">
       <Position>13</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1534</StateNumber>
     </column>
-    <index id="44" parent="20" name="my_user_pkey">
+    <index id="45" parent="20" name="my_user_pkey">
       <ObjectId>17778</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="45" parent="20" name="my_user_pkey">
+    <key id="46" parent="20" name="my_user_pkey">
       <ObjectId>17779</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>my_user_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="46" parent="21" name="id">
+    <column id="47" parent="21" name="id">
       <Position>1</Position>
       <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1527</StateNumber>
     </column>
-    <column id="47" parent="21" name="email">
+    <column id="48" parent="21" name="email">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1527</StateNumber>
     </column>
-    <column id="48" parent="21" name="hash_code">
+    <column id="49" parent="21" name="hash_code">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1527</StateNumber>
     </column>
-    <column id="49" parent="21" name="password">
+    <column id="50" parent="21" name="password">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1527</StateNumber>
     </column>
-    <column id="50" parent="21" name="user_type_id">
+    <column id="51" parent="21" name="user_type_id">
       <Position>5</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1527</StateNumber>
     </column>
-    <column id="51" parent="21" name="username">
+    <column id="52" parent="21" name="username">
       <Position>6</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1527</StateNumber>
     </column>
-    <index id="52" parent="21" name="sign_up_pkey">
+    <index id="53" parent="21" name="sign_up_pkey">
       <ObjectId>17786</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="53" parent="21" name="sign_up_pkey">
+    <key id="54" parent="21" name="sign_up_pkey">
       <ObjectId>17787</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>sign_up_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="54" parent="22" name="id">
+    <column id="55" parent="22" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1545</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="56" parent="22" name="skill">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>1545</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="57" parent="22" name="type">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>1547</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="58" parent="22" name="skill_pkey">
+      <ObjectId>17823</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="59" parent="22" name="skill_pkey">
+      <ObjectId>17824</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>skill_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="60" parent="23" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1535</StateNumber>
     </column>
-    <column id="55" parent="22" name="languages_id">
+    <column id="61" parent="23" name="languages_id">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <StateNumber>1535</StateNumber>
     </column>
-    <column id="56" parent="22" name="level_id">
+    <column id="62" parent="23" name="level_id">
       <Position>3</Position>
       <DataType>integer|0</DataType>
       <StateNumber>1535</StateNumber>
     </column>
-    <column id="57" parent="22" name="user_id">
+    <column id="63" parent="23" name="user_id">
       <Position>4</Position>
       <DataType>bigint|0</DataType>
       <StateNumber>1535</StateNumber>
     </column>
-    <index id="58" parent="22" name="user_language_level_pkey">
+    <index id="64" parent="23" name="user_language_level_pkey">
       <ObjectId>17803</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="59" parent="22" name="user_language_level_pkey">
+    <key id="65" parent="23" name="user_language_level_pkey">
       <ObjectId>17804</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>user_language_level_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="60" parent="22" name="fk5am0yixdvc53r9d8jclf2ya6s">
+    <foreign-key id="66" parent="23" name="fk5am0yixdvc53r9d8jclf2ya6s">
       <ObjectId>17805</ObjectId>
       <ColNames>languages_id</ColNames>
       <RefTableId>17795</RefTableId>
@@ -294,7 +328,7 @@
       <RefKeyName>languages_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="61" parent="22" name="fkl3m1qv918emh4o7dhcuaaol15">
+    <foreign-key id="67" parent="23" name="fkl3m1qv918emh4o7dhcuaaol15">
       <ObjectId>17810</ObjectId>
       <ColNames>level_id</ColNames>
       <RefTableId>17790</RefTableId>
@@ -303,7 +337,7 @@
       <RefKeyName>language_level_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="62" parent="22" name="fkr9sylh7gc58dfv7hn5kxqjb88">
+    <foreign-key id="68" parent="23" name="fkr9sylh7gc58dfv7hn5kxqjb88">
       <ObjectId>17815</ObjectId>
       <ColNames>user_id</ColNames>
       <RefTableId>17772</RefTableId>

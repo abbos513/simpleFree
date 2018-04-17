@@ -103,7 +103,7 @@
 
             </div>
 
-            <div style="width:75%;color:rgb(24,95,166);height:100px;background-color:red;float:right;margin-right:0px;">
+            <div style="width:75%;color:rgb(24,95,166);height:100px;background-color:#e9e9e96e;float:right;margin-right:0px;">
                 <div class="table-responsive" style="margin-right:60px;width:100%;">
                     <table class="table" style="width: 100%;">
                         <thead>
@@ -121,7 +121,7 @@
                     </table>
                 </div>
             </div>
-            <input id="remove1" class="btn btn-primary" type="button" style="margin-top: 7px; float: right; margin-right: 78px;" value="Remove All"/>
+            <input id="remove1" class="btn btn-primary" type="button" style="margin-top: 17px; float: right; margin-right: 78px;" value="Remove All"/>
 
         </div>
         <div style="background-color:#f7f9fc;height:175px; margin-top: 60px;">
@@ -145,26 +145,25 @@
         <div style="height:270px;">
             <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">Skills</h1>
             <div style="height:200px;background-color:#f7f9fc;width:35%;float:left;">
-                <select style="margin-left:49px;width:229px;height:28px;">
-                <optgroup label="This is a group">
-                    <option value="12" selected="">This is item 1</option>
-                    <option value="13">This is item 2</option>
-                    <option value="14">This is item 3</option>
-                </optgroup>
-            </select><select multiple style="margin-left:49px;margin-top:15px;width:230px; height:150px">
-                <optgroup label="This is a group">
-                    <option value="12" selected>This is item 1</option>
-                    <option value="13">This is item 2</option>
-                    <option value="14">This is item 3</option>
-                </optgroup>
-            </select></div>
-            <div
-                    style="width:59%;float:left;height:194px;background-color:#dddddd;margin-left:0px;"><label
-                    style="float:left;margin-top:7px;margin-left:45px;">English:</label><a href="#"
-                                                                                           style="float:none;margin-top:0px;padding-top:0px;vertical-align:middle;">X</a>
+                <select id="skillType" style="margin-left:49px;width:229px;height:28px;">
+                <!--<optgroup label="Skill type group ">-->
+                    <option value="1" selected>Programming</option>
+                    <option value="2">Writing</option>
+                <!--</optgroup>-->
+            </select>
+                <!--<button id="SelectType">Add</button>-->
+                <select id="showSkills" multiple style="margin-left:49px;margin-top:15px;width:230px; height:150px">
+                    <!--<th:block th:each="skill : ${writing}">-->
+                        <!--<option th:value="${skill.getId()}" th:text="${skill.getSkill()}"></option>-->
+                    <!--</th:block>-->
+            </select>
+                <button id="removeSkills" style="margin-right: 50px; float: right;" class="btn btn-primary">Remove All</button>
+            </div>
+            <div id="addedSkills" style="width:59%;float:left;height:194px;background-color:#dddddd;margin-left:0px;">
+
             </div>
         </div>
-        <div style="height:127px;background-color:#f7f9fc;width:940px;">
+        <div style="height:127px;background-color:#f7f9fc;width:940px; margin-top: 20px;">
             <div style="height:125px;background-color:#f7f9fc;float:left;width:35%;">
                 <h1 style="font-size:28px;padding-top:2px;padding-left:42px;height:49px;width:236px;float:left;">
                     Attached files</h1>
@@ -308,7 +307,7 @@
         //     console.log(a);
 
 
-        debugger;
+        // debugger;
         $("#remove1").click(function () {
             lanIdArr = [];
             levelIdArr = [];
@@ -317,7 +316,82 @@
             });
         });
 
+        var writingSkillList = [[${writing}]];
+        var programmingSkillList = [[${programming}]];
 
+        $("#skillType").change(function () {
+            // debugger;
+
+            var skillTypeVal = $("#skillType").val();
+
+            $("#showSkills").html('');
+            if(skillTypeVal == "1"){
+                // $("#showSkills").html('<select id="showSkills" multiple style="margin-left:49px;margin-top:15px;width:230px; height:150px">\n' +
+                //     '                    <th:block th:each="skill : ${programming}">\n' +
+                //     '                        <option th:value="${skill.getId()}" th:text="${skill.getSkill()}"></option>\n' +
+                //     '                    </th:block>\n' +
+                //     '            </select>');
+                for(let i=0; i<programmingSkillList.length; i++){
+                    var skill = programmingSkillList[i];
+                    console.log(skill);
+                    var old = $("#showSkills").html();
+                    $("#showSkills").html(old + '<option value="'+skill.id+'" text="' +skill.skill +'"></option>');
+                }
+            }else if(skillTypeVal == "2"){
+                // $("#showList").html('<select id="showSkills" multiple style="margin-left:49px;margin-top:15px;width:230px; height:150px">\n' +
+                //     '                    <th:block th:each="skill : ${writing}">\n' +
+                //     '                        <option th:value="${skill.getId()}" th:text="${skill.getSkill()}"></option>\n' +
+                //     '                    </th:block>\\n\' +\n' +
+                //     '                    \'            </select>');
+                for(let i=0; i<writingSkillList.length; i++){
+                    var skill = writingSkillList[i];
+                    console.log(skill);
+                    var old = $("#showSkills").html();
+                    $("#showSkills").html(old + '<option value="'+skill.id+'" text="' +skill.skill +'"></option>');
+                }
+            }
+
+        });
+
+        var skillIdArr = [];
+
+        $("#showSkills").change(function () {
+            var skillId = $("#showSkills").val()[0];
+            // console.log(skillId);
+            // debugger;
+
+            if(!skillIdArr.includes(skillId)) {// checking if languages exsist in array
+                // console.log(!skillIdArr.includes(skillId));
+                skillIdArr.push(skillId);
+
+                // console.log(skillIdArr);
+                var allSkills = writingSkillList.concat(programmingSkillList);
+                // console.log(allSkills);
+
+                var skillFromArray = allSkills.filter(function (e) {
+                    return e.id == skillId; // getting skill by id
+                });
+                // console.log(skillFromArray);
+
+                var skill1 = skillFromArray[0];
+                // console.log(skill1);
+
+                var skillName = skill1.skill;
+                // console.log(skillName);
+
+                var oldVal = $("#addedSkills").html();
+                $("#addedSkills").html(oldVal + '<div style="width: 33%; float: left; text-align: center;"> ' + skillName + '</div>'); // adding new elements to exsisting html
+                // console.log(skillIdArr);
+            }
+            // console.log(skillIdArr);
+        });
+
+        $("#removeSkills").click(function () {
+            // debugger;
+            skillIdArr = [];
+            $("#addedSkills").html("");
+            // console.log(skillIdArr);
+        });
 
 </script>
 
