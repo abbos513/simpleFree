@@ -84,19 +84,15 @@
             <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">Languages</h1>
             <div style="width:25%;color:rgb(44,129,214);height:129px;background-color:#f7f9fc;float:left;">
                     <select id="languageId" style="margin-left:42px;margin-top:20px;width:150px;">
-                        <!--<optgroup label="This is a group">-->
                             <th:block th:each="language1 : ${languages}">
                                 <option th:value="${language1.getId()}" th:text="${language1.getLanguage()}"></option>
                             </th:block>
-                            <!--</optgro up>-->
                     </select>
 
                     <select id="levelId" style="margin-left:42px;margin-top:20px;width:150px;">
-                        <!--<optgroup label="This is a group">-->
                         <th:block th:each="level : ${languageLevel}">
                             <option th:value="${level.getId()}" th:text="${level.getLevel()}"></option>
                         </th:block>
-                        <!--</optgro up>-->
                     </select>
 
                     <input id="btnAddLanToArray" style="margin: 20px; margin-left: 40px;" class="btn btn-primary" type="button" value="Add"/>
@@ -125,22 +121,16 @@
 
         </div>
         <div style="background-color:#f7f9fc;height:175px; margin-top: 60px;">
-            <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">Address</h1><label
-                style="margin-right:-55px;width:175px;margin-top:10px;margin-left:37px;">City:<br></label><input
-                type="text"><label style="margin-right:-9px;width:160px;margin-top:10px;margin-left:71px;">Region/State:<br></label>
-            <input
-                    type="text" style="width:300px;"><label
-                style="margin-right:-9px;width:160px;margin-top:10px;margin-left:425px;">Country:<br></label><select
-                style="margin-left:0px;margin-top:20px;width:301px;">
-            <optgroup label="This is a group">
-                <option value="12" selected="">This is item 1</option>
-                <option value="13">This is item 2</option>
-                <option value="14">This is item 3</option>
-            </optgroup>
-        </select></div>
+            <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">Address</h1>
+            <label style="margin-right:-55px;width:175px;margin-top:10px;margin-left:37px;">City:<br></label>
+            <input type="text"><label style="margin-right:-9px;width:160px;margin-top:10px;margin-left:71px;">Region/State:<br></label>
+            <input type="text" style="width:300px;">
+            <label style="margin-right:-9px;width:160px;margin-top:10px;margin-left:425px;">Country:<br></label>
+            <input type="text" style="width:300px;">
+        </div>
         <div
                 style="height:183px;">
-            <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">Address</h1><textarea
+            <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">About me</h1><textarea
                 style="margin-left:48px;width:830px;height:92px;font-size:14px;"></textarea></div>
         <div style="height:270px;">
             <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">Skills</h1>
