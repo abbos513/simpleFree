@@ -2,6 +2,7 @@ package com.freelance.dal.Controller;
 
 import com.freelance.dal.Entity.MyUser;
 import com.freelance.dal.Entity.Skill;
+import com.freelance.dal.Model.FreelancerFillViewModel;
 import com.freelance.dal.Model.LogInViewModel;
 import com.freelance.dal.Model.SignUpViewModel;
 import com.freelance.dal.Repository.LanguageLevelRepository;
@@ -28,9 +29,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 @RequestMapping(value = "/auth")
+@SessionAttributes("sessionUser")
 public class AuthController {
 
     @Autowired
@@ -69,9 +73,10 @@ public class AuthController {
     }
 
     @RequestMapping(value = "/LogIn", method = RequestMethod.POST)
-    public ModelAndView login(@ModelAttribute("logIn") LogInViewModel logIn, Model model){
+    public ModelAndView login(@ModelAttribute("logIn") LogInViewModel logIn, Model model, HttpSession session){
         MyUser user = signUpService.isUserExsist(logIn);
         if (user != null){
+            session.setAttribute("loggedInUser", user);
             model.addAttribute("email", user.getEmail());
             model.addAttribute("username", user.getUserName());
             model.addAttribute("id", user.getId());
@@ -89,6 +94,39 @@ public class AuthController {
             return new ModelAndView("LogIn");
         }
     }
+
+    @RequestMapping(value = "/fillFree", method = RequestMethod.POST)
+    public ModelAndView fillFree(@ModelAttribute("fillFree") FreelancerFillViewModel freefillViewModel, Model model, HttpSession session){
+
+        signUpService.fillApplication(freefillViewModel, session);
+        return new ModelAndView("LogIn");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private static String UPLOAD_FOLDER = "/home/abbos513/Documents/IdeaProjects/freelance/src/main/resources/static/userFiles/";
 

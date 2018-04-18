@@ -45,6 +45,9 @@
 </div>
 <div style="height:1365px;background-color:rgba(0,0,0,0.1);padding-top:17px;">
     <div style="margin:0px;height:1327px;background-color:#f7f9fc;padding:0px;width:940px;align-items:center;margin-left:26px;align:center;/*float:initial;*/position:inherit;margin-left:auto;margin-right:auto;">
+
+        <form method="POST" action="/auth/fillFree">
+
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -59,8 +62,7 @@
                             <input type="file" name="file"/>
                             <br/>
                             <br/>
-                            <input class="btn btn-primary" onclick="imageClick()" type="submit" value="Add"
-                                   style="margin-left:102px;height:29px;font-size:14px;padding:0px;width:112px;margin-top:12px;float:left;align-items:center;background-color:#56c6c6;"/>
+                            <input class="btn btn-primary" onclick="imageClick()" type="submit" value="Add" style="margin-left:102px;height:29px;font-size:14px;padding:0px;width:112px;margin-top:12px;float:left;align-items:center;background-color:#56c6c6;"/>
                         </form>
                     </td>
                     <td style="width:248px;">
@@ -68,14 +70,14 @@
                         <label style="margin-right:10px;width:210px;margin-top:10px;">Username: (not changable)</label>
                         <label style="margin-right:10px;width:210px;margin-top:10px;">First name:<br></label>
                         <label style="margin-right:10px;width:160px;margin-top:10px;">Last name:<br></label>
-                        <label
-                                style="margin-right:40px;width:160px;margin-top:10px;">Phone number:<br></label>
+                        <label style="margin-right:40px;width:160px;margin-top:10px;">Phone number:<br></label>
                     </td>
                     <td><input type="text" th:value="${email}" readonly="readonly" style="width:300px;margin-top:40px;">
                         <input type="text" th:value="${username}" readonly="readonly" style="width:300px;margin-top:10px;">
-                        <input type="text" style="width:300px;margin-top:10px;">
-                        <input type="text" style="width:300px;margin-top:10px;">
-                        <input type="text" style="width:300px;margin-top:10px;"></td>
+                        <input name="firstName" type="text" style="width:300px;margin-top:10px;">
+                        <input name="lastName" type="text" style="width:300px;margin-top:10px;">
+                        <input type="phoneNumber" style="width:300px;margin-top:10px;">
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -123,15 +125,16 @@
         <div style="background-color:#f7f9fc;height:175px; margin-top: 60px;">
             <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">Address</h1>
             <label style="margin-right:-55px;width:175px;margin-top:10px;margin-left:37px;">City:<br></label>
-            <input type="text"><label style="margin-right:-9px;width:160px;margin-top:10px;margin-left:71px;">Region/State:<br></label>
-            <input type="text" style="width:300px;">
+            <input type="text" name="city">
+            <label style="margin-right:-9px;width:160px;margin-top:10px;margin-left:71px;">Region/State:<br></label>
+            <input type="text" name="regionState" style="width:300px;">
             <label style="margin-right:-9px;width:160px;margin-top:10px;margin-left:425px;">Country:<br></label>
-            <input type="text" style="width:300px;">
+            <input type="text" style="width:300px;" name="country">
         </div>
         <div
                 style="height:183px;">
-            <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">About me</h1><textarea
-                style="margin-left:48px;width:830px;height:92px;font-size:14px;"></textarea></div>
+            <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">About me</h1>
+            <textarea style="margin-left:48px;width:830px;height:92px;font-size:14px;" name="aboutMe"></textarea></div>
         <div style="height:270px;">
             <h1 style="font-size:28px;padding-top:12px;padding-left:42px;">Skills</h1>
             <div style="height:200px;background-color:#f7f9fc;width:35%;float:left;">
@@ -164,11 +167,9 @@
             </div>
             <div style="background-color:#dddddd;height:126px;float:left;width:59%;"></div>
         </div>
-        <button class="btn btn-primary" type="button"
-                style="float:right;padding-right:10px;margin-right:55px;margin-top:21px;width:204px;background-color:#56c6c6;">
-            Submit
-        </button>
+        <button class="btn btn-primary" type="submit" style="float:right;padding-right:10px;margin-right:55px;margin-top:21px;width:204px;background-color:#56c6c6;"> Submit </button>
     </div>
+    </form>
 </div>
 <div class="footer-clean" style="color:#fff;background-color:#28a745;">
     <footer>

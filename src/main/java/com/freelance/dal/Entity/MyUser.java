@@ -19,7 +19,7 @@ public class MyUser {
     private List<UserLanguageLevel> languages;
     private String city;
     private String regionState;
-    private String countryId;
+    private String country;
     private String aboutText;
 
     public MyUser(String email, String userName, String password) {
@@ -29,6 +29,17 @@ public class MyUser {
     }
 
     public MyUser() {    }
+
+    public MyUser(String firstName, String lastName, String phoneNumber, List<UserLanguageLevel> languages, String city, String regionState, String country, String aboutText) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.languages = languages;
+        this.city = city;
+        this.regionState = regionState;
+        this.country = country;
+        this.aboutText = aboutText;
+    }
 
     public long getId() {
         return id;
@@ -102,12 +113,12 @@ public class MyUser {
         this.regionState = regionState;
     }
 
-    public String getCountryId() {
-        return countryId;
+    public String getCountry() {
+        return country;
     }
 
-    public void setCountryId(String countryId) {
-        this.countryId = countryId;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getAboutText() {
