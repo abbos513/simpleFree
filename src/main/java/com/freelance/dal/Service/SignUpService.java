@@ -85,6 +85,8 @@ public class SignUpService {
     }
 
     public boolean fillApplication (FreelancerFillViewModel freelancerFillViewModel, HttpSession session){
+        Object arr = (Object) freelancerFillViewModel.getSkillId();
+        String str = arr.toString();
         MyUser user = (MyUser) session.getAttribute("loggedInUser");
         MyUser newUser = this.userRepository.findByEmail(user.getEmail());
         newUser.setFirstName(freelancerFillViewModel.getFirstName());

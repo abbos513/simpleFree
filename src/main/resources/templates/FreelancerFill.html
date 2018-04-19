@@ -76,7 +76,7 @@
                         <input type="text" th:value="${username}" readonly="readonly" style="width:300px;margin-top:10px;">
                         <input name="firstName" type="text" style="width:300px;margin-top:10px;">
                         <input name="lastName" type="text" style="width:300px;margin-top:10px;">
-                        <input type="phoneNumber" style="width:300px;margin-top:10px;">
+                        <input name="phoneNumber" style="width:300px;margin-top:10px;">
                     </td>
                 </tr>
                 </tbody>
@@ -167,7 +167,8 @@
             </div>
             <div style="background-color:#dddddd;height:126px;float:left;width:59%;"></div>
         </div>
-        <button class="btn btn-primary" type="submit" style="float:right;padding-right:10px;margin-right:55px;margin-top:21px;width:204px;background-color:#56c6c6;"> Submit </button>
+            <input type="hidden" value="" name="skillId" />
+        <button id="btnSubmit" class="btn btn-primary" type="submit" style="float:right;padding-right:10px;margin-right:55px;margin-top:21px;width:204px;background-color:#56c6c6;"> Submit </button>
     </div>
     </form>
 </div>
@@ -382,6 +383,15 @@
             skillIdArr = [];
             $("#addedSkills").html("");
             // console.log(skillIdArr);
+        });
+
+        $("#btnSubmit").click(function () {
+            console.log($("#skillId").val());
+            // $.post("skillId", skillIdArr);
+        })
+
+        $(document).ready(function () {
+            $('input[name="skillId"]').val(skillIdArr);
         });
 
 </script>

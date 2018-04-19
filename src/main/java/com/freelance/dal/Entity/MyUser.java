@@ -21,6 +21,24 @@ public class MyUser {
     private String regionState;
     private String country;
     private String aboutText;
+    @ManyToMany
+    private List<Skill> skills;
+
+    public List<UserLanguageLevel> getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(List<UserLanguageLevel> languages) {
+        this.languages = languages;
+    }
+
+    public List<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<Skill> skills) {
+        this.skills = skills;
+    }
 
     public MyUser(String email, String userName, String password) {
         this.email = email;
