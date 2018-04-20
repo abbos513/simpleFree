@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface LanguageLevelRepository extends CrudRepository<com.freelance.dal.Entity.LanguageLevel, Long>{
     public Iterable<LanguageLevel> findAll();
-//    public LanguageLevel findAllById(Long id);
+    public LanguageLevel findById(int id);
 }

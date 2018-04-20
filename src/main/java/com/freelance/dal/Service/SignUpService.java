@@ -1,13 +1,10 @@
 package com.freelance.dal.Service;
 
-import com.freelance.dal.Entity.Login;
-import com.freelance.dal.Entity.SignUp;
-import com.freelance.dal.Entity.MyUser;
+import com.freelance.dal.Entity.*;
 import com.freelance.dal.Model.FreelancerFillViewModel;
 import com.freelance.dal.Model.LogInViewModel;
 import com.freelance.dal.Model.SignUpViewModel;
-import com.freelance.dal.Repository.SignUpRepository;
-import com.freelance.dal.Repository.UserRepository;
+import com.freelance.dal.Repository.*;
 import com.freelance.dal.Utils.MailService;
 import com.freelance.dal.Utils.RandonString;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +13,8 @@ import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class SignUpService {
@@ -26,6 +25,12 @@ public class SignUpService {
 
     @Autowired
     private MailService mailService;
+    @Autowired
+    private SkillRepository skillRepository;
+    @Autowired
+    private LanguageLevelRepository languageLevelRepository;
+    @Autowired
+    private LanguagesRepository languagesRepository;
 
     @Autowired
     public SignUpService(SignUpRepository signUpRepository, UserRepository userRepository){
@@ -85,10 +90,28 @@ public class SignUpService {
     }
 
     public boolean fillApplication (FreelancerFillViewModel freelancerFillViewModel, HttpSession session){
-        Object arr = (Object) freelancerFillViewModel.getSkillId();
-        String str = arr.toString();
+
         MyUser user = (MyUser) session.getAttribute("loggedInUser");
         MyUser newUser = this.userRepository.findByEmail(user.getEmail());
+
+//        int[] arr = (int[])freelancerFillViewModel.getSkillId();
+
+        List<Skill> skillList= new ArrayList<Skill>();
+
+        for (int id: freelancerFillViewModel.getSkillId()) {
+            skillList.add(skillRepository.findById(id));
+        }
+
+//        List<UserLanguageLevel> userLanguageLevels= new ArrayList<UserLanguageLevel>();
+//
+//        for(int id: freelancerFillViewModel.getLanguageId()){
+//            UserLanguageLevel userLanguageLevel = new UserLanguageLevel();
+//            userLanguageLevel.setLanguage(languagesRepository.findAllById(id));
+//            userLanguageLevel.setLevel(languageLevelRepository.findAllById(id));
+//            userLanguageLevel.setUser(newUser);
+//            userLanguageLevels.add(userLanguageLevel);
+//        }
+
         newUser.setFirstName(freelancerFillViewModel.getFirstName());
         newUser.setLastName(freelancerFillViewModel.getLastName());
         newUser.setPhoneNumber(freelancerFillViewModel.getPhoneNumber());
@@ -98,6 +121,8 @@ public class SignUpService {
         newUser.setCountry(freelancerFillViewModel.getCountry());
         newUser.setAboutText(freelancerFillViewModel.getAboutMe());
 
+        newUser.setSkills(skillList);
+//        newUser.setLanguages(userLanguageLevels);
         this.userRepository.save(newUser);
         return true;
     }

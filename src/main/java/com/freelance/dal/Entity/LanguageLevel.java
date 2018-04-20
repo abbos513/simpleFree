@@ -1,16 +1,25 @@
 package com.freelance.dal.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class LanguageLevel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
     private String level;
+    @OneToMany(mappedBy = "level")
+    private List<UserLanguageLevel> userLanguageLevels;
 
     public int getId() {
         return id;
@@ -20,11 +29,11 @@ public class LanguageLevel {
         this.id = id;
     }
 
-    public String getLevel() {
-        return level;
+    public List<UserLanguageLevel> getUserLanguageLevels() {
+        return userLanguageLevels;
     }
 
-    public void setLevel(String level) {
-        this.level = level;
+    public void setUserLanguageLevels(List<UserLanguageLevel> userLanguageLevels) {
+        this.userLanguageLevels = userLanguageLevels;
     }
 }

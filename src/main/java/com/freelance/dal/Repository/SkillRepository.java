@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface SkillRepository extends CrudRepository<Skill, Long> {
     public Iterable<Skill> findByType(String type);
+    public Iterable<Skill> findAll();
+    public Skill findById(int id);
 }

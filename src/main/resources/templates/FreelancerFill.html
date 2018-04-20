@@ -38,8 +38,8 @@
             <div class="collapse navbar-collapse"
                  id="navcol-1">
                 <ul class="nav navbar-nav mr-auto"></ul>
-                <span class="navbar-text actions"> <a href="#" class="login">Log In</a><a
-                        class="btn btn-light action-button" role="button" href="#">Sign Up</a></span></div>
+                <span class="navbar-text actions"> <a href="#" class="login">Log In</a>
+                    <a class="btn btn-light action-button" role="button" href="#">Sign Up</a></span></div>
         </div>
     </nav>
 </div>
@@ -143,13 +143,13 @@
                     <option value="1" selected>Programming</option>
                     <option value="2">Writing</option>
                 <!--</optgroup>-->
-            </select>
+                </select>
                 <!--<button id="SelectType">Add</button>-->
                 <select id="showSkills" multiple style="margin-left:49px;margin-top:15px;width:230px; height:150px">
-                    <!--<th:block th:each="skill : ${writing}">-->
-                        <!--<option th:value="${skill.getId()}" th:text="${skill.getSkill()}"></option>-->
-                    <!--</th:block>-->
-            </select>
+                    <th:block th:each="skill : ${programming}">
+                        <option th:value="${skill.getId()}" th:text="${skill.getSkill()}"></option>
+                    </th:block>
+                </select>
                 <button id="removeSkills" style="margin-right: 50px; float: right;" class="btn btn-primary">Remove All</button>
             </div>
             <div id="addedSkills" style="width:59%;float:left;height:194px;background-color:#dddddd;margin-left:0px;">
@@ -167,6 +167,8 @@
             </div>
             <div style="background-color:#dddddd;height:126px;float:left;width:59%;"></div>
         </div>
+            <input type="hidden" value="" name="languageId" />
+            <input type="hidden" value="" name="levelId" />
             <input type="hidden" value="" name="skillId" />
         <button id="btnSubmit" class="btn btn-primary" type="submit" style="float:right;padding-right:10px;margin-right:55px;margin-top:21px;width:204px;background-color:#56c6c6;"> Submit </button>
     </div>
@@ -286,6 +288,9 @@
                     $("#showList").html(exsistList + '<div id="remove" style="width: 33%; float: left;"> ' + name + " "+ level + " " + '</div>'); // adding new elements to exsisting html
 
                 }
+                $('input[name="languageId"]').val(lanIdArr);
+                $('input[name="levelId"]').val(levelIdArr);
+
                 // console.log(lanIdArr +"   " + levelIdArr);
                 //
                 // console.log(lanIdArr +"   " + levelIdArr);
@@ -327,7 +332,7 @@
                     var skill = programmingSkillList[i];
                     console.log(skill);
                     var old = $("#showSkills").html();
-                    $("#showSkills").html(old + '<option value="'+skill.id+'" text="' +skill.skill +'"></option>');
+                    $("#showSkills").html(old + '<option value="'+skill.id+'" text="' +skill.skill +'">' + skill.skill + '</option>');
                 }
             }else if(skillTypeVal == "2"){
                 // $("#showList").html('<select id="showSkills" multiple style="margin-left:49px;margin-top:15px;width:230px; height:150px">\n' +
@@ -339,7 +344,7 @@
                     var skill = writingSkillList[i];
                     console.log(skill);
                     var old = $("#showSkills").html();
-                    $("#showSkills").html(old + '<option value="'+skill.id+'" text="' +skill.skill +'"></option>');
+                    $("#showSkills").html(old + '<option value="'+skill.id+'" text="' +skill.skill +'">' + skill.skill + '</option>');
                 }
             }
 
@@ -375,6 +380,7 @@
                 $("#addedSkills").html(oldVal + '<div style="width: 33%; float: left; text-align: center;"> ' + skillName + '</div>'); // adding new elements to exsisting html
                 // console.log(skillIdArr);
             }
+            $('input[name="skillId"]').val(skillIdArr);
             // console.log(skillIdArr);
         });
 
@@ -391,6 +397,7 @@
         })
 
         $(document).ready(function () {
+
             $('input[name="skillId"]').val(skillIdArr);
         });
 
