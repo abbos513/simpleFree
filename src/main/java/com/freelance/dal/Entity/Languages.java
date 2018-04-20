@@ -7,8 +7,20 @@ import java.util.List;
 public class Languages {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int Id;
+    private int id;
     private String language;
+    @OneToMany(mappedBy = "language")
+    private List<UserLanguageLevel> userLanguageLevels;
+    @ManyToMany
+    private List<Project> projects;
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
+    }
 
     public String getLanguage() {
         return language;
@@ -18,15 +30,12 @@ public class Languages {
         this.language = language;
     }
 
-    @OneToMany(mappedBy = "language")
-    private List<UserLanguageLevel> userLanguageLevels;
-
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        id = id;
     }
 
     public List<UserLanguageLevel> getUserLanguageLevels() {
