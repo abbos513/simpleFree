@@ -23,6 +23,18 @@ public class MyUser {
     private String aboutText;
     @ManyToMany
     private List<Skill> skills;
+    @OneToMany(mappedBy = "user")
+    private List<Project> projects;
+    @OneToMany(mappedBy = "user")
+    private List<Bids> bids;
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
+    }
 
     public List<UserLanguageLevel> getLanguages() {
         return languages;
