@@ -103,7 +103,7 @@ public class AuthController {
     public ModelAndView fillFree(@ModelAttribute("fillFree") FreelancerFillViewModel freefillViewModel, Model model, Principal principal /*HttpSession session*/){
         MyUser user = userRepository.findByUserName(principal.getName());
         signUpService.fillApplication(freefillViewModel, user);
-        return new ModelAndView("LogIn");
+        return new ModelAndView("SearchProject");
     }
 
 

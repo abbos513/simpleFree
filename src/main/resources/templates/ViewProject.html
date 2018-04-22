@@ -23,20 +23,35 @@
                 <div class="collapse navbar-collapse"
                     id="navcol-1">
                     <ul class="nav navbar-nav mr-auto"></ul><span class="navbar-text actions">
-                    <a href="#" class="login">Log In</a><a class="btn btn-light action-button" role="button" href="#">Sign Up</a></span></div>
+                    <a href="/project/searchProject" class="login">All projects</a>
+                    <a class="btn btn-light action-button" role="button" href="/logout">Log Out</a></span></div>
             </div>
         </nav>
     </div>
-    <div style="height:1365px;background-color:rgba(0,0,0,0.1);padding-top:17px;/*float:right;*/width:100%;margin:auto;/*padding:auto;*//*position:absolute;*/">
-        <div style="margin:0px;height:1327px;background-color:#f7f9fc;padding:0px;width:940px;align-items:center;margin-left:26px;align:center;float:initial;margin-left:auto;margin-right:auto;float:center;">
-            <div style="height:498px;margin:0;padding:0;width:100%;"><label style="margin-top:40px;margin-left:60px;float:left;">Owner name:</label>
+    <div style="min-height:800px;background-color:rgba(0,0,0,0.1);padding-top:17px;/*float:right;*/width:100%;margin:auto;/*padding:auto;*//*position:absolute;*/">
+        <div style="margin:0px;min-eight:800px;background-color:#f7f9fc;padding:0px;width:940px;align-items:center;margin-left:26px;align:center;float:initial;margin-left:auto;margin-right:auto;float:center;">
+            <div style="min-height: 100px;margin:0;padding:0;width:100%;"><label style="margin-top:40px;margin-left:60px;float:left;">Owner name:</label>
                 <!--<label style="margin-top:40px;margin-left:60px;float:left;">owner</label>-->
                 <label style="margin-top:40px;margin-left:60px;float:left;" th:if="${project.getUser()} != null" th:text="${project.getUserFullName()}">no name&nbsp;</label>
                 <label style="margin:auto;width:100%;text-align:center;margin-top:22px;font-size:20px;font-weight:bold;" th:text="${project.getProjectTitle()}">Project title</label>
                 <p style="margin:20px;margin-left:60px;margin-right:60px;height:100px;" th:text="${project.getAboutProject()}">Paragraph</p>
                     <div style="height:150px;">
-                        <div style="float:left;width:48%;height:150px;background-color:#ededed;"><label style="margin-left:60px;">Required skills</label></div>
-                        <div style="float:right;width:46%;height:150px;background-color:#ededed;margin-right:15px;"><label style="margin-left:60px;">Required&nbsp;languages</label></div>
+                        <div style="float:left;width:48%;height:150px;background-color:#ededed;">
+                            <div style="width: 100%">
+                                <label style="margin-left:60px;font-weight: bold;">Required skills</label>
+                            </div>
+                            <div th:each="skill : ${skills}" style="width: 50%; float: left; text-align: center;">
+                                <label th:text="${skill.getSkill()}"></label>
+                            </div>
+
+                        </div>
+                        <div style="float:right;width:46%;height:150px;background-color:#ededed;margin-right:15px;">
+
+                            <div style="width: 100%;"><label style="margin-left:60px;font-weight: bold;">Required&nbsp;languages</label></div>
+                            <div th:each="language : ${languages}" style="width: 50%; float: left; text-align: center;">
+                                <label th:text="${language.getLanguage()}"></label>
+                            </div>
+                        </div>
                     </div>
             </div>
 
@@ -45,8 +60,8 @@
             <form action="/project/viewProject" method="post" modelattribute="bid">
 
             <div style="width:100%;height:200px;border:1px solid;">
-                <label style="margin-right:auto;width:60%;margin-left:5%;margin-top:10px;font-size:20px;font-weight:bold;">Name</label>
-                <input type="text" style="width:90%;margin-left:5%;height:89px;" name="text">
+                <label style="margin-right:auto;width:60%;margin-left:5%;margin-top:10px;font-size:20px;font-weight:bold;">Bid for project</label>
+                <textarea type="text" style="width:90%;margin-left:5%;height:89px;" name="text"></textarea>
                 <div style="float:right;width:52%;height:50px;background-color:tra;">
                     <label style="float:left;margin-right:30px;margin-top:14px;">Bid price:&nbsp;</label>
                     <input name="offeredPrice" type="number" style="margin-top:9px;" >

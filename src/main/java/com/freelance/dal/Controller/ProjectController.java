@@ -46,24 +46,29 @@ public class ProjectController {
     public ModelAndView addProject(@ModelAttribute("addProject") AddProjectViewModel projectViewModel, BindingResult bindingResult, Model model, Principal principal){
         MyUser user = userRepository.findByUserName(principal.getName());
         projectService.saveProject(projectViewModel, user);
-        return new ModelAndView("AddProject");
+        return new ModelAndView("SearchProject");
     }
 
     @RequestMapping(value = "/searchProject", method = RequestMethod.GET)
     public ModelAndView searchProject(Model model) {
         model.addAttribute("projects", projectRepository.findAll());
         Iterable<Project> Iuser = projectRepository.findAll();
-        String name = "a";
-        for (Project pro: Iuser) {
-            if (pro.getUser() != null)
-            name = pro.getUserFullName();
+        if(projectRepository.findAll().isEmpty()){
+            model.addAttribute("noProjects", "There is no projects");
         }
+//        String name = "a";
+//        for (Project pro: Iuser) {
+//            if (pro.getUser() != null)
+//            name = pro.getUserFullName();
+//        }
         return new ModelAndView("SearchProject");
     }
 
     @RequestMapping(value = "/viewProject/{projectId}", method = RequestMethod.GET)
     public ModelAndView viewProject(@PathVariable("projectId") Long projectId, Model model){
         model.addAttribute("project", projectRepository.findById(projectId));
+        model.addAttribute("skills", projectRepository.findById(projectId).getSkills());
+        model.addAttribute("languages", projectRepository.findById(projectId).getLanguages());
         model.addAttribute("bids", projectRepository.findById(projectId).getBids());
         return new ModelAndView("ViewProject");
     }
@@ -76,6 +81,7 @@ public class ProjectController {
         projectService.saveBid(viewModel, projectId, user);
         model.addAttribute("project", projectRepository.findById(projectId));
         model.addAttribute("bids", projectRepository.findById(projectId).getBids());
-        return new ModelAndView("ViewProject");
+        Long id = projectRepository.findById(projectId).getId();
+        return new ModelAndView("redirect:/project/viewProject/"+id);
     }
 }
