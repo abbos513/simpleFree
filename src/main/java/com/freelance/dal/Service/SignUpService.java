@@ -68,6 +68,7 @@ public class SignUpService {
             newUser.setEmail(signUp.getEmail());
             newUser.setUserName(signUp.getUsername());
             newUser.setPassword(signUp.getPassword());
+            newUser.setFilled(false);
             this.userRepository.save(newUser);
             return true;
         }else {
@@ -89,9 +90,9 @@ public class SignUpService {
         return user;
     }
 
-    public boolean fillApplication (FreelancerFillViewModel freelancerFillViewModel, HttpSession session){
+    public boolean fillApplication (FreelancerFillViewModel freelancerFillViewModel, MyUser user){
 
-        MyUser user = (MyUser) session.getAttribute("loggedInUser");
+//        MyUser user = (MyUser) session.getAttribute("loggedInUser");
         MyUser newUser = this.userRepository.findByEmail(user.getEmail());
 
 //        int[] arr = (int[])freelancerFillViewModel.getSkillId();
@@ -120,6 +121,7 @@ public class SignUpService {
         newUser.setRegionState(freelancerFillViewModel.getRegionState());
         newUser.setCountry(freelancerFillViewModel.getCountry());
         newUser.setAboutText(freelancerFillViewModel.getAboutMe());
+        newUser.setFilled(true);
 
         newUser.setSkills(skillList);
 //        newUser.setLanguages(userLanguageLevels);

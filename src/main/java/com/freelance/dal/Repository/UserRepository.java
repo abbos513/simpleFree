@@ -10,5 +10,8 @@ import javax.jws.soap.SOAPBinding;
 public interface UserRepository extends CrudRepository<MyUser, Long> {
     public MyUser findByEmailAndPassword(String email, String password);
     public MyUser findByUserNameAndPassword(String username, String password);
+    public MyUser findByUserName(String username);
     public MyUser findByEmail(String username);
+    public MyUser findById(Long id);
+//    public MyUser findByEmailOrUserName(String username);
 }

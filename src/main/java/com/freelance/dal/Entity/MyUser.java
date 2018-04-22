@@ -1,5 +1,7 @@
 package com.freelance.dal.Entity;
 
+import com.sun.istack.internal.Nullable;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -27,6 +29,24 @@ public class MyUser {
     private List<Project> projects;
     @OneToMany(mappedBy = "user")
     private List<Bids> bids;
+    @Nullable
+    private boolean isFilled;
+
+    public List<Bids> getBids() {
+        return bids;
+    }
+
+    public void setBids(List<Bids> bids) {
+        this.bids = bids;
+    }
+
+    public boolean isFilled() {
+        return isFilled;
+    }
+
+    public void setFilled(boolean filled) {
+        isFilled = filled;
+    }
 
     public List<Project> getProjects() {
         return projects;

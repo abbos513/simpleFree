@@ -8,6 +8,7 @@ import com.freelance.dal.Model.SignUpViewModel;
 import com.freelance.dal.Repository.LanguageLevelRepository;
 import com.freelance.dal.Repository.LanguagesRepository;
 import com.freelance.dal.Repository.SkillRepository;
+import com.freelance.dal.Repository.UserRepository;
 import com.freelance.dal.Service.SignUpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,12 +31,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpSession;
-
 
 @Controller
 @RequestMapping(value = "/auth")
-@SessionAttributes("sessionUser")
 public class AuthController {
 
     @Autowired
@@ -45,6 +44,8 @@ public class AuthController {
     private LanguageLevelRepository languageLevelRepository;
     @Autowired
     private SkillRepository skillRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @RequestMapping(value = "/SignUp", method = RequestMethod.GET)
     public ModelAndView showSignUpForm() {
@@ -56,8 +57,6 @@ public class AuthController {
         signUpService.save(signUp);
         return "Confirm";
     }
-
-    // HTML5 + CSS + Javascript(jquery, ajax)
 
     @RequestMapping(name="emailVarification", value = "/hash/{hashCode}", method = RequestMethod.GET)
     public String emailVarification(@PathVariable("hashCode") String hashcode){
@@ -72,33 +71,38 @@ public class AuthController {
         return new ModelAndView("LogIn");
     }
 
-    @RequestMapping(value = "/LogIn", method = RequestMethod.POST)
-    public ModelAndView login(@ModelAttribute("logIn") LogInViewModel logIn, Model model, HttpSession session){
-        MyUser user = signUpService.isUserExsist(logIn);
+    @RequestMapping(value = "/Login", method = RequestMethod.POST)
+    public ModelAndView login(@ModelAttribute("logIn") LogInViewModel logIn, Model model, Principal principal /*HttpSession session*/){
+        MyUser user = userRepository.findByEmail(principal.getName());
+        if(user==null)
+            user = userRepository.findByUserName(principal.getName());
         if (user != null){
-            session.setAttribute("loggedInUser", user);
-            model.addAttribute("email", user.getEmail());
-            model.addAttribute("username", user.getUserName());
-            model.addAttribute("id", user.getId());
-            model.addAttribute("languageLevel", languageLevelRepository.findAll());
-            model.addAttribute("languages", languagesRepository.findAll());
+//            session.setAttribute("loggedInUser", user);
+            if(!user.isFilled()) {
+                model.addAttribute("email", user.getEmail());
+                model.addAttribute("username", user.getUserName());
+                model.addAttribute("id", user.getId());
+                model.addAttribute("languageLevel", languageLevelRepository.findAll());
+                model.addAttribute("languages", languagesRepository.findAll());
 
-            Iterable<Skill> writingSkills = skillRepository.findByType("Writing");
-            Iterable<Skill> programmingSkills = skillRepository.findByType("Programming");
-            model.addAttribute("writing", writingSkills);
-            model.addAttribute("programming", programmingSkills);
+                Iterable<Skill> writingSkills = skillRepository.findByType("Writing");
+                Iterable<Skill> programmingSkills = skillRepository.findByType("Programming");
+                model.addAttribute("writing", writingSkills);
+                model.addAttribute("programming", programmingSkills);
 
-            return new ModelAndView("FreelancerFill");
+                return new ModelAndView("FreelancerFill");
+            }else
+                return new ModelAndView("redirect:/project/searchProject");
         }else{
             model.addAttribute("massage", "Username or Password is incorrect");
-            return new ModelAndView("LogIn");
+            return new ModelAndView("redirect:LogIn");
         }
     }
 
     @RequestMapping(value = "/fillFree", method = RequestMethod.POST)
-    public ModelAndView fillFree(@ModelAttribute("fillFree") FreelancerFillViewModel freefillViewModel, Model model, HttpSession session){
-
-        signUpService.fillApplication(freefillViewModel, session);
+    public ModelAndView fillFree(@ModelAttribute("fillFree") FreelancerFillViewModel freefillViewModel, Model model, Principal principal /*HttpSession session*/){
+        MyUser user = userRepository.findByUserName(principal.getName());
+        signUpService.fillApplication(freefillViewModel, user);
         return new ModelAndView("LogIn");
     }
 
