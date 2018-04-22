@@ -5,6 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.jws.soap.SOAPBinding;
+import java.util.List;
 
 @Repository
 public interface UserRepository extends CrudRepository<MyUser, Long> {
@@ -13,5 +14,6 @@ public interface UserRepository extends CrudRepository<MyUser, Long> {
     public MyUser findByUserName(String username);
     public MyUser findByEmail(String username);
     public MyUser findById(Long id);
+    public List<MyUser> findAll();
 //    public MyUser findByEmailOrUserName(String username);
 }

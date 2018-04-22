@@ -46,7 +46,7 @@ public class ProjectController {
     public ModelAndView addProject(@ModelAttribute("addProject") AddProjectViewModel projectViewModel, BindingResult bindingResult, Model model, Principal principal){
         MyUser user = userRepository.findByUserName(principal.getName());
         projectService.saveProject(projectViewModel, user);
-        return new ModelAndView("SearchProject");
+        return new ModelAndView("redirect:/project/searchProject");
     }
 
     @RequestMapping(value = "/searchProject", method = RequestMethod.GET)

@@ -90,6 +90,10 @@ public class Project {
         return this.user.getFirstName() + " " + this.user.getLastName();
     }
 
+    public Long getUserId(){
+        return this.user.getId();
+    }
+
     public List<Bids> getBids() {
         return bids;
     }

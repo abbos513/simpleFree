@@ -38,6 +38,6 @@ public class MailService {
                             "<a href='" + "http://localhost:8080/auth/hash/" + signUp.getHashCode() + "'>here.</a>" +
                             "</body></html>", true);
 
-//        mailSender.send(message);
+        mailSender.send(message);
     }
 }

@@ -25,18 +25,23 @@
 <body style="margin: 0; padding: 0;">
     <div>
         <nav class="navbar navbar-dark navbar-expand-md bg-success navigation-clean-button" style="background-color:#66d7d7;">
-            <div class="container"><a class="navbar-brand" href="#">Company Name</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="container"><a class="navbar-brand" href="#">Company Name</a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1">
+                    <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse"
-                    id="navcol-1">
+                     id="navcol-1">
                     <ul class="nav navbar-nav mr-auto"></ul><span class="navbar-text actions">
-                    <a href="#" class="login">Log In</a>
+                    <ul class="nav navbar-nav mr-auto"></ul><span class="navbar-text actions">
+                    <a href="/user/freelancers" class="login">Freelancers</a>
+                    <a href="/project/searchProject" class="login">All projects</a>
                     <a class="btn btn-light action-button" role="button" href="/logout">Log Out</a></span></div>
             </div>
         </nav>
     </div>
-    <div style="height:1365px;background-color:rgba(0,0,0,0.1);padding-top:17px;/*float:right;*/">
+    <div style="min-height:500px;background-color:rgba(0,0,0,0.1);padding-top:17px;/*float:right;*/">
         <form method="POST" action="/project/addProject">
-        <div style="height:1327px;background-color:#f7f9fc;padding:0px;width:940px;align-items:center;margin-left:auto;align:center;float:initial;margin-left:auto;margin-right:auto;float:center;">
+        <div style="min-height:500px;background-color:#f7f9fc;padding:0px;width:940px;align-items:center;margin-left:auto;align:center;float:initial;margin-left:auto;margin-right:auto;float:center;">
             <div class="table-responsive">
                 <table class="table">
                     <thead>

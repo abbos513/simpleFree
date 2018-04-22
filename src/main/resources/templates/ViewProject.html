@@ -23,8 +23,12 @@
                 <div class="collapse navbar-collapse"
                     id="navcol-1">
                     <ul class="nav navbar-nav mr-auto"></ul><span class="navbar-text actions">
+
+                    <a href="/user/freelancers" class="login">Freelancers</a>
+
                     <a href="/project/searchProject" class="login">All projects</a>
-                    <a class="btn btn-light action-button" role="button" href="/logout">Log Out</a></span></div>
+                    <a class="btn btn-light action-button" role="button" href="/logout">Log Out</a>
+                </span></div>
             </div>
         </nav>
     </div>
@@ -32,7 +36,9 @@
         <div style="margin:0px;min-eight:800px;background-color:#f7f9fc;padding:0px;width:940px;align-items:center;margin-left:26px;align:center;float:initial;margin-left:auto;margin-right:auto;float:center;">
             <div style="min-height: 100px;margin:0;padding:0;width:100%;"><label style="margin-top:40px;margin-left:60px;float:left;">Owner name:</label>
                 <!--<label style="margin-top:40px;margin-left:60px;float:left;">owner</label>-->
-                <label style="margin-top:40px;margin-left:60px;float:left;" th:if="${project.getUser()} != null" th:text="${project.getUserFullName()}">no name&nbsp;</label>
+
+                <a th:href="@{/user/profile/{id}(id=${project.getUserId()})}" style="margin-top:40px;margin-left:60px;float:left;" th:if="${project.getUser()} != null" th:text="${project.getUserFullName()}">no name&nbsp;</a>
+
                 <label style="margin:auto;width:100%;text-align:center;margin-top:22px;font-size:20px;font-weight:bold;" th:text="${project.getProjectTitle()}">Project title</label>
                 <p style="margin:20px;margin-left:60px;margin-right:60px;height:100px;" th:text="${project.getAboutProject()}">Paragraph</p>
                     <div style="height:150px;">
@@ -45,7 +51,7 @@
                             </div>
 
                         </div>
-                        <div style="float:right;width:46%;height:150px;background-color:#ededed;margin-right:15px;">
+                        <div style="float:right;width:46%;height:150px;background-color:#ededed;">
 
                             <div style="width: 100%;"><label style="margin-left:60px;font-weight: bold;">Required&nbsp;languages</label></div>
                             <div th:each="language : ${languages}" style="width: 50%; float: left; text-align: center;">

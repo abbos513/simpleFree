@@ -178,4 +178,8 @@ public class MyUser {
     public void setAboutText(String aboutText) {
         this.aboutText = aboutText;
     }
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
 }
